@@ -1,36 +1,14 @@
+# Important
 
-## SNIP: Single-shot network pruning based on connection sensitivity
+This repo is a **fork** of [mil-ad/snip](https://github.com/mil-ad/snip) that I modified to my needs. **The actual implementation is not mine**, but Milad Alizadeh's. I just adapted it to my needs. The corresponding paper to the code is by [Lee et al. (2018)](https://arxiv.org/abs/1810.02340).
 
-This is an _unofficial_ PyTorch implementation of the paper [SNIP: Single-shot Network Pruning based on Connection Sensitivity](https://arxiv.org/abs/1810.02340) by Namhoon Lee, Thalaiyasingam Ajanthan and Philip H. S. Torr.
+## Changes I made 
 
-It doesn not cover all the experiment in the paper but it does include the main ones:
+For my master's thesis , I rewrote the SNIP method in a more efficient way that makes use of the prune function that is built in to PyTorch. I'm using this code as a sanity-checking method, to compare my results  see whether my implementation works. To be able to do this, I applied the following changes to this repo: 
 
-* LeNet5-Caffe on MNIST
-* VGG-D on CIFAR-10
-
-I haven't had the time to add an argparser yet the network type and pruning level should be changed directly in the code.
-
-## Environment
-This has been tested with Python 3.7.1 and PyTorch 1.0.0. The exact environment can be replicated by:
-
-`$ conda env create -f environment.yml`
-
-This would create a conda environment called `snip-env`.
-
-## Usage
-
-```
-$ conda activate snip-env
-$ python train.py
-```
-
-## Results
-
-Three runs with different seeds with LeNet5-Caffe on MNIST (sparsity level of 98%):
-
-<img src="results_mnist.svg" alt="Results with LeNet5-Caffe - Sparsity 9%" width="95%"/>
-
-
-Two runs with different seeds with VGG-D on CIFAR-10 (sparsity level of 95%):
-
-<img src="results_cifar10.svg" alt="Results with VGG-D - Sparsity 95%" width="95%"/>
+* Moved loss to `crossentropy`
+* Moved to `timm` for models
+* Moved to my dataloaders for fair comparison
+* Included a stylized print function for all layers
+* Removed anything to do with training as I don't need it
+* Added a main to demonstrate the functionality
