@@ -1,4 +1,6 @@
 _dataset
+data
+__pycache__
 _results
 runs
 .vscode
